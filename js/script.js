@@ -41,9 +41,19 @@ let notificationIcon = document.querySelector("#notificationIcon");
 let profileIcon = document.querySelector("#profileIcon");
 notificationIcon.onclick = function () {
     document.querySelector("#notificationMenu").classList.toggle("active");
+    document.querySelectorAll("#notificationMenu li").forEach((li) => {
+        li.addEventListener("click", () => {
+            document.querySelector("#notificationMenu").classList.remove("active");
+        })
+    })
 }
 profileIcon.onclick = function () {
     document.querySelector("#profileMenu").classList.toggle("active");
+    document.querySelectorAll("#profileMenuUl li").forEach((li) => {
+        li.addEventListener("click", () => {
+            document.querySelector("#profileMenu").classList.remove("active");
+        })
+    })
 }
 // End notificationIcon 
 // Start display-none-search 

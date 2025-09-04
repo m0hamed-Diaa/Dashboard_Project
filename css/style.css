@@ -182,7 +182,7 @@ body {
     background-color: var(--light);
     font-family: var(--lato);
     gap: 40px;
-    z-index: 1000;
+    z-index: 2000;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -412,6 +412,7 @@ main {
     padding: 20px;
     width: 100%;
     overflow-y: auto;
+    z-index: 1000;
     min-height: calc(100vh - 56px);
     font-family: var(--poppins);
 }
@@ -481,6 +482,12 @@ main .box-info {
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 30px;
+    z-index: 1000;
+}
+@media (max-width: 512px) {
+    main .box-info {
+        padding-top: 80px;
+    }
 }
 main .box-info li {
     width: calc((100% - 40px) / 3);
