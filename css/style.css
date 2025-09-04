@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} 
+
+a {
+    text-decoration: none;
+    transition: .3s ease;
+}
+a:hover {
+    color: var(--blue);
+}
+li {
+    list-style: none;
+}
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+.dark {
+    --light: #0C0C1F;
+    --grey: #060714;
+    --dark: #FBFBFB;
+}
+body {
+    background-color: var(--grey);
+    transition: background-color .4s ease, color .4s ease;
+}
+
+/* Start sidebar */
+#sidebar {
+    position: fixed;
+    z-index: 2000;
+    width: 190px;
+    height: 100%;
+    background-color: var(--light);
+    font-family: var(--lato);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#sidebar.active {
+    max-width: 50px;
+    align-items: center;
+}
+
+#sidebar.active .text {
+    display: none;
+}
+#sidebar.active .side-menu.top li {
+    margin-left: 5px;
+}
+#sidebar.active .side-menu.top li a {
+    padding: 5px;
+}
+#sidebar.active .side-menu.top li a i {
+    margin-left: 0;
+}
+#sidebar.active .side-menu.bottom li {
+    margin-left: 0;
+}
+#sidebar::--webkit-scrollbar {
+    display: none;
+}
+#sidebar.active {
+    width: 60px;
+}
+#sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--blue);
+}
+
+#sidebar .brand .text {
+    font-size: 20px;
+}
+
+#sidebar .side-menu.top li {
+    height: 40px;
+    background: transparent;
+    border-radius: 48px 0 0 48px;
+    padding: 5px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+#sidebar .side-menu.top li.active {
+    background-color: var(--grey);
+    position: relative;
+}
+#sidebar .side-menu.top li.active::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -40px;
+    right: 0;
+    border-radius: 50%;
+    z-index: -1;
+    box-shadow: 20px 20px 0 var(--grey);
+}
+#sidebar .side-menu.top li.active::after {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	bottom: -40px;
+	right: 0;
+	box-shadow: 20px -20px 0 var(--grey);
+	z-index: -1;
+}
+#sidebar .side-menu li a {
+    background-color: var(--light);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: .3s ease;
+    border-radius: 48px;
+    color: var(--dark);
+}
+#sidebar .side-menu.top li.active a {
+    color: var(--blue);
+}
+#sidebar .side-menu.top li:hover a {
+    color: var(--blue);
+    transform: translateX(5px);
+}
+#sidebar .side-menu.top li a i {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+#sidebar .side-menu.bottom li {
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+#sidebar .side-menu.bottom li:last-child a {
+    color: var(--red);
+}
+/* End sidebar */
+/* Start content */
+#content {
+    width: calc(100% - 190px);
+    position: relative;
+    left: 190px;
+    z-index: 1000;
+}
+#sidebar.active ~ #content {
+    width: calc(100% - 50px);
+    left: 50px;
+}
+
+/* Start nav */
+
+#content nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    height: 40px;
+    background-color: var(--light);
+    font-family: var(--lato);
+    gap: 40px;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#content nav::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0;
+    bottom: -40px;
+    z-index: -1;
+    border-radius: 50%;
+    box-shadow: -20px -20px 0 var(--light);
+}
+#content nav .nav-home-services {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#content nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#content nav .nav-links i,
+#content nav .nav-links a {
+    cursor: pointer;
+    color: var(--dark);
+    transition: .3s ease;
+}
+#content nav .nav-links a:hover {
+    color: var(--blue);
+}
+#content nav form {
+    display: flex;
+    width: 280px;
+    align-items: center;
+    position: relative;
+}
+#content nav form input[type='search'] {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--grey);
+    padding: 6px;
+    border-radius: 10px;
+    caret-color: var(--blue);
+}
+#content nav form input[type='search']:focus {
+    border: 2px solid var(--blue);
+}
+#content nav form button {
+    background-color: none;
+    border: none;
+    background-color: var(--blue);
+    color: var(--dark);
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 10px 10px 0;
+    height: 100%;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s ease;
+}
+#content nav form button:hover {
+    background-color: var(--light-blue);
+}
+#content nav .nav-home-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* Start swith-dark */
+#content nav .nav-home-right .swith-dark label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--grey);
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+#content nav .nav-home-right .swith-dark label i:nth-child(1) {
+    color: var(--yellow);
+}
+#content nav .nav-home-right .swith-dark label i:nth-child(2) {
+    color: var(--red);
+}
+#content nav .nav-home-right .swith-dark label .ball {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    position: absolute;
+    top: 3px;
+    left: 2px;
+    z-index: 100;
+    transition: .3s ease;
+}
+#content nav .nav-home-right .swith-dark input[type='checkbox']:checked+ label .ball {
+    left: 20px;
+}
+/* End swith-dark */
+/* Start notificationIcon */
+#content nav .nav-home-right #notificationIcon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#content nav .nav-home-right #notificationIcon i {
+    color: var(--dark);
+}
+
+#content nav .nav-home-right #notificationIcon .num {
+    color: var(--dark);
+    background-color: var(--red);
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: normal;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--light);
+}
+#content nav .nav-home-right .notification-menu {
+    position: fixed;
+    top: 40px;
+    right: -400px;
+    z-index: 2000;
+    background-color: var(--light);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px var(--dark-grey);
+    transition: .3s ease;
+}
+#content nav .nav-home-right .notification-menu.active {
+    right: 40px;
+}
+#content nav .nav-home-right .notification-menu li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--dark-grey);
+    cursor: pointer;
+}
+#content nav .nav-home-right .notification-menu li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100%;
+}
+#content nav .nav-home-right .notification-menu li a {
+    color: var(--dark);
+    display: block;
+    transition: .3s ease;
+}
+#content nav .nav-home-right .notification-menu li:hover a {
+    color: var(--blue);
+    transform: translateX(8px);
+}
+/* End notificationIcon */
+/* Start notificationMenu */
+#content nav .nav-home-right #profileIcon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#content nav .nav-home-right #profileMenu {
+    position: fixed;
+    top: 40px;
+    right: -400px;
+    z-index: 2000;
+    background-color: var(--light);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px var(--dark-grey);
+    transition: .3s ease;
+}
+
+#content nav .nav-home-right #profileMenu.active {
+    right: 20px;
+}
+#content nav .nav-home-right #profileMenu li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--dark-grey);
+    cursor: pointer;
+}
+#content nav .nav-home-right #profileMenu li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    width: 100%;
+}
+#content nav .nav-home-right #profileMenu li  a {
+    color: var(--dark);
+    display: block;
+    transition: .3s ease;
+}
+#content nav .nav-home-right #profileMenu li:hover a {
+    color: var(--blue);
+    transform: translateX(8px);
+}
+#content nav .nav-home-right #profileMenu li:hover a {
+    color: var(--blue);
+    transform: translateX(8px);
+}
+/* End notificationMenu */
+/* End content */
+
+/* Start main */
+main {
+    padding: 20px;
+    width: 100%;
+    overflow-y: auto;
+    min-height: calc(100vh - 56px);
+    font-family: var(--poppins);
+}
+main .main-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 400px) {
+    main .main-title {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+main .main-title .left h1 {
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+main .main-title .left ul {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--dark);
+}
+main .main-title .left ul li:nth-child(1) a {
+    color: var(--dark-grey);
+    pointer-events: none;
+}
+main .main-title .left ul li:last-child a {
+    color: var(--blue);
+}
+main .main-title .right a {
+    background-color: var(--blue);
+    padding: 10px;
+    border-radius: 10px;
+    color: var(--dark);
+}
+main .main-title .right a i {
+    animation: move-icon .9s infinite ease;
+}
+main .main-title .right a:hover i {
+    animation-play-state: paused;
+}
+@keyframes move-icon {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+/* Start recent + todo */
+
+@media (min-width: 1150px) {
+    .recent_todo {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+}
+/* End recent + todo */
+/* Start box info */
+main .box-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+}
+main .box-info li {
+    width: calc((100% - 40px) / 3);
+    background-color: var(--light);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+@media(max-width: 820px) {
+    main .box-info {
+        flex-direction: column;
+    }
+    main .box-info li {
+        width: 100%;
+    }
+}
+main .box-info li::before,
+main .box-info li::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 0;
+    transition: .7s ease;
+}
+main .box-info li::before {
+    left: 0;
+    top: 0;
+}
+main .box-info li::after {
+    right: 0;
+    bottom: 0;
+}
+main .box-info li:hover::before,
+main .box-info li:hover::after {
+    height: 100%;
+}
+main .box-info li:nth-child(1)::before,
+main .box-info li:nth-child(1)::after {
+    background-color: var(--blue);
+}
+main .box-info li:nth-child(2)::before,
+main .box-info li:nth-child(2)::after {
+    background-color: var(--yellow);
+}
+main .box-info li:nth-child(3)::before,
+main .box-info li:nth-child(3)::after {
+    background-color: var(--orange);
+}
+main .box-info li i {
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blue);
+    border-radius: 15px;
+    font-size: 35px;
+}
+main .box-info li:nth-child(1) i {
+    background-color: var(--light-blue);
+    color: var(--blue);
+}
+main .box-info li:nth-child(2) i {
+    background-color: var(--light-yellow);
+    color: var(--yellow);
+}
+main .box-info li:nth-child(3) i {
+    background-color: var(--light-orange);
+    color: var(--orange);
+}
+main .box-info li .text {
+    color: var(--dark);
+}
+/* End box info */
+/* Start table-data */
+main .table-data {
+    background-color: var(--light);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+main .table-data .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+main .table-data .head h2 {
+    color: var(--dark);
+}
+main .table-data .head .icons {
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+main .table-data .head .icons .none.active {
+    z-index: 1000;
+}
+main .table-data .head .icons i:hover {
+    background-color: var(--grey);
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* End table-data */
+/* Start tabel */
+main .table-data .table-parent {
+    overflow-x: auto;
+}
+main .table-data table {
+    min-width: 700px;
+    border-spacing: 0;
+    margin-top: 10px;
+}
+main .table-data table thead {
+    width: 100%;
+}
+main .table-data table thead tr th {
+    color: var(--dark);
+}
+main .table-data table tbody tr:hover {
+    background-color: var(--grey);
+}
+
+main .table-data table th {
+    padding-bottom: 12px;
+    font-size: 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+main .table-data table td {
+    padding: 16px 10px;
+    color: var(--dark);
+}
+
+main .table-data table tbody tr {
+    position: relative;
+}
+
+main .table-data table tbody tr td:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+main .table-data table tbody img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+main .table-data table tbody tr td:last-child {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    text-align: left;
+    transform: translateY(-50%);
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+    border-radius: 10px;
+}
+main .table-data table tbody tr:nth-child(1) td:last-child,
+main .table-data table tbody tr:nth-child(5) td:last-child {
+    background-color: var(--blue);
+}
+main .table-data table tbody tr:nth-child(2) td:last-child,
+main .table-data table tbody tr:nth-child(4) td:last-child {
+    background-color: var(--orange);
+}
+main .table-data table tbody tr:nth-child(3) td:last-child {
+    background-color: var(--yellow);
+}
+/* End tabel */
+
+/* Start todos */
+main .todo {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 20px;
+}
+main .todo .head-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark);
+}
+main .todo .head-todo .icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+main .todo .head-todo .icons i:hover {
+    cursor: pointer;
+    background-color: var(--grey);
+    border-radius: 50%;
+}
+main .todo .todo-list {
+    margin-top: 20px;
+}
+main .todo .todo-list li {
+    background-color: var(--grey);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    color: var(--dark);
+}
+main .todo .todo-list li:nth-child(1),
+main .todo .todo-list li:nth-child(2),
+main .todo .todo-list li:nth-child(4) {
+    border-left: 10px groove var(--blue);
+}
+
+main .todo .todo-list li:nth-child(3),
+main .todo .todo-list li:nth-child(5) {
+    border-left: 10px groove var(--orange);
+}
+main .todo .todo-list li i:hover {
+    background-color: var(--light);
+    cursor: pointer;
+    border-radius: 50%;
+}
+/* End todos */
+/* End main */
+
+
+/* Media Query at 767px */
+.display-none-search {
+    display: none;
+    color: var(--dark);
+}
+.display-none-search.active {
+    display: none;
+}
+@media (max-width: 820px) {
+    #sidebar {
+        width: 50px;
+    }
+    #sidebar .text {
+        display: none;
+    }
+    #sidebar .side-menu.top li a i {
+        margin-left: 5px;
+    }
+    #content {
+        width: calc(100% - 50px);
+        left: 50px;
+    }
+    #content nav .nav-links {
+        display: none;
+    }
+    #content nav form {
+        display: none;
+        width: 200px;
+    }
+    #content nav form.active {
+        display: block;
+    }
+    .display-none-search {
+        display: block;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+    main .main-title .left ul {
+        gap: 5px;
+    }
+}
