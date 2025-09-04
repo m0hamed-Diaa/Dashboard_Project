@@ -493,7 +493,6 @@ main .box-info li {
     position: relative;
     overflow: hidden;
     box-shadow: 9px 6px 8px var(--light-blue);
-    z-index: 1000;
 }
 @media(max-width: 820px) {
     main .box-info {
