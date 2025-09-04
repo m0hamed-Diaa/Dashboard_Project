@@ -492,6 +492,8 @@ main .box-info li {
     border-radius: 20px;
     position: relative;
     overflow: hidden;
+    box-shadow: 9px 6px 8px var(--light-blue);
+    z-index: 1000;
 }
 @media(max-width: 820px) {
     main .box-info {
@@ -744,7 +746,7 @@ main .todo .todo-list li i:hover {
     }
     #content nav form {
         display: none;
-        width: 200px;
+        width: 120px;
     }
     #content nav form.active {
         display: block;

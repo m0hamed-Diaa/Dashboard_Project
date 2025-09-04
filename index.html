@@ -9,6 +9,19 @@
         <!-- Boxicons -->
 	    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 	    <link href='https://unpkg.com/boxicons@2.1.4/dist/boxicons.js' rel='stylesheet'>
+        <script>
+            (function() {
+                let darkPref = localStorage.getItem("dark");
+
+                document.documentElement.style.colorScheme = "light dark";
+
+                if (darkPref === "done") {
+                    document.documentElement.classList.add("dark");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                }
+            })();
+        </script>
     </head>
     <body>
         <!-- Start Sidebar -->

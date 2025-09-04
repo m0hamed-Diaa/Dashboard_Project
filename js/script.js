@@ -53,3 +53,13 @@ display_none_search.onclick = function () {
     display_none_search.classList.toggle("active");
 }
 // End display-none-search 
+// Start window on open => reload
+window.onload = function () {
+    if (!sessionStorage.getItem("reloaded")) {
+        sessionStorage.setItem("reloaded", "true");
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+    }
+}
+// End window on open => reload
